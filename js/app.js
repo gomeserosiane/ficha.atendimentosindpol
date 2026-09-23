@@ -1,27 +1,27 @@
 // Configurações dos campos reproduzem as perguntas da ficha oficial.
 const medical = [
-  {id:'medicamento',title:'Está tomando algum medicamento?',options:['Sim','Não'],detail:'Se sim, qual(is)?',x:[476,578],y:980,detailBox:[788,946,1015,35],wide:true},
-  {id:'pressao',title:'Sua pressão é:',options:['Normal','Alta','Baixa','Controlada com medicamento'],x:[311,419,529,839],y:1025,wide:true},
-  {id:'hemorragia',title:'Problemas com sangue/hemorragia?',options:['Sim','Não'],x:[472,568],y:1077},
-  {id:'anestesicos',title:'Tem ou teve problemas com anestésicos?',options:['Sim','Não','Não sei'],x:[512,608,726],y:1126},
-  {id:'psicologico',title:'Faz algum tratamento psicológico?',options:['Sim','Não'],x:[452,550],y:1176},
-  {id:'quimio',title:'Já fez ou faz algum tratamento com quimioterapia ou radioterapia?',options:['Sim','Não'],x:[735,833],y:1225,wide:true},
-  {id:'cirurgia',title:'Já fez alguma cirurgia?',options:['Sim','Não'],x:[350,448],y:1275},
-  {id:'necessidades',title:'Portador(a) de necessidades especiais?',options:['Sim','Não'],detail:'Se sim, qual(is)?',x:[509,605],y:1326,detailBox:[900,1317,880,34],wide:true},
-  {id:'dentista',title:'Com que frequência vai ao dentista?',options:['Semestral','Anual','Quando tenho alguma queixa','Outra'],detail:'Se outra, qual?',x:[548,649,955,1050],y:1375,detailBox:[1100,1368,677,34],wide:true},
-  {id:'cronica',title:'Você tem alguma doença crônica?',options:['Sim','Não'],x:[446,544],y:1425},
-  {id:'respiratorios',title:'Asma ou problemas respiratórios?',options:['Sim','Não'],x:[445,543],y:1475},
-  {id:'anemia',title:'Você tem anemia?',options:['Sim','Não'],x:[305,404],y:1525},
-  {id:'desmaios',title:'Você tem desmaios/convulsões?',options:['Sim','Não'],x:[435,533],y:1575},
-  {id:'transmissivel',title:'Você tem alguma doença transmissível?',options:['Sim','Não'],x:[501,599],y:1627}
+  {id:'medicamento',title:'Está tomando algum medicamento?',options:['Sim','Não'],detail:'Se sim, qual(is)?',x:[479,588],y:968,detailBox:[786,948,1012,38],wide:true},
+  {id:'pressao',title:'Sua pressão é:',options:['Normal','Alta','Baixa','Controlada com medicamento'],x:[311,419,527,840],y:1023,wide:true},
+  {id:'hemorragia',title:'Problemas com sangue/hemorragia?',options:['Sim','Não'],x:[474,572],y:1070},
+  {id:'anestesicos',title:'Tem ou teve problemas com anestésicos?',options:['Sim','Não','Não sei'],x:[520,619,738],y:1120},
+  {id:'psicologico',title:'Faz algum tratamento psicológico?',options:['Sim','Não'],x:[452,551],y:1170},
+  {id:'quimio',title:'Já fez ou faz algum tratamento com quimioterapia ou radioterapia?',options:['Sim','Não'],x:[742,840],y:1220,wide:true},
+  {id:'cirurgia',title:'Já fez alguma cirurgia?',options:['Sim','Não'],x:[351,449],y:1270},
+  {id:'necessidades',title:'Portador(a) de necessidades especiais?',options:['Sim','Não'],detail:'Se sim, qual(is)?',x:[507,606],y:1319,detailBox:[790,1301,1008,40],wide:true},
+  {id:'dentista',title:'Com que frequência vai ao dentista?',options:['Semestral','Anual','Quando tenho alguma queixa','Outra'],detail:'Se outra, qual?',x:[548,652,961,null],y:1369,detailBox:[1060,1350,738,40],wide:true},
+  {id:'cronica',title:'Você tem alguma doença crônica?',options:['Sim','Não'],x:[449,548],y:1418},
+  {id:'respiratorios',title:'Asma ou problemas respiratórios?',options:['Sim','Não'],x:[446,544],y:1467},
+  {id:'anemia',title:'Você tem anemia?',options:['Sim','Não'],x:[307,405],y:1516},
+  {id:'desmaios',title:'Você tem desmaios/convulsões?',options:['Sim','Não'],x:[433,532],y:1567},
+  {id:'transmissivel',title:'Você tem alguma doença transmissível?',options:['Sim','Não'],x:[500,599],y:1619}
 ];
 const habits = [
-  {id:'range',title:'Range os dentes?',options:['Sim','Não'],x:[350,420],y:1729},
-  {id:'escovacoes',title:'Quantas vezes você escova os dentes ao dia?',input:true,box:[1328,1701,455,44]},
-  {id:'fumante',title:'Você é fumante?',options:['Sim','Não'],x:[320,419],y:1794},
-  {id:'gravida',title:'Você está grávida?',options:['Sim','Não'],x:[1178,1276],y:1794},
-  {id:'diabete',title:'Você tem diabetes?',options:['Sim','Não'],x:[320,419],y:1861},
-  {id:'alcool',title:'Você faz uso de bebida alcoólica?',options:['Sim','Não'],x:[1314,1412],y:1861}
+  {id:'range',title:'Range os dentes?',options:['Sim','Não'],x:[321,419],y:1722},
+  {id:'escovacoes',title:'Quantas vezes você escova os dentes ao dia?',input:true,box:[1322,1697,478,40]},
+  {id:'fumante',title:'Você é fumante?',options:['Sim','Não'],x:[321,419],y:1793},
+  {id:'gravida',title:'Você está grávida?',options:['Sim','Não'],x:[1178,1277],y:1796},
+  {id:'diabete',title:'Você tem diabetes?',options:['Sim','Não'],x:[321,419],y:1859},
+  {id:'alcool',title:'Você faz uso de bebida alcoólica?',options:['Sim','Não'],x:[1315,1414],y:1865}
 ];
 
 // Desenha os controles mantendo cada grupo de respostas independente.
@@ -73,58 +73,67 @@ function fitText(font,text,maxWidth,preferredSize,minSize=11){
   while(size>4.5&&font.widthOfTextAtSize(text,size)>maxWidth)size-=.25;
   return {text,size};
 }
-function writeBox(page,font,value,x,top,width,height=33,base=21){
+function writeBox(page,font,value,x,top,width,height=33,base=24){
   const text=String(value||'').trim().replace(/\s+/g,' '); if(!text)return;
   const horizontalPadding=8,verticalPadding=4;
   const fitted=fitText(font,text,width-horizontalPadding*2,Math.min(base,height-verticalPadding*2),11);
   const baseline=2631-top-height/2-fitted.size*.36;
   page.drawText(fitted.text,{x:x+horizontalPadding,y:baseline,size:fitted.size,font,color:PDFLib.rgb(.08,.11,.16)});
 }
-function wrapText(font,text,size,maxWidth){
+function wrapTextIntoWidths(font,text,size,widths){
   const lines=[];let remaining=text.trim();
-  while(remaining){
+  for(const maxWidth of widths){
+    if(!remaining){lines.push('');continue;}
     let cut=remaining.length;
     while(cut>1&&font.widthOfTextAtSize(remaining.slice(0,cut),size)>maxWidth)cut--;
     if(cut<remaining.length){const space=remaining.lastIndexOf(' ',cut);if(space>0)cut=space;}
     lines.push(remaining.slice(0,cut).trim());remaining=remaining.slice(cut).trim();
   }
-  return lines;
+  return {lines,remaining};
 }
 function writeDateBox(page,font,iso,x,top,width,slashX1,slashX2,height=32){
   if(!iso)return;const [year,month,day]=String(iso).split('-');if(!day||!month||!year)return;
   const slashWidth=10;
   const segments=[[day,x,slashX1-x],[month,slashX1+slashWidth,slashX2-slashX1-slashWidth],[year,slashX2+slashWidth,x+width-slashX2-slashWidth]];
   segments.forEach(([value,start,segmentWidth])=>{
-    const fitted=fitText(font,value,segmentWidth-6,22,12);
+    const fitted=fitText(font,value,segmentWidth-6,24,12);
     const textWidth=font.widthOfTextAtSize(fitted.text,fitted.size);
     page.drawText(fitted.text,{x:start+(segmentWidth-textWidth)/2,y:2631-top-height/2-fitted.size*.36,size:fitted.size,font,color:PDFLib.rgb(.08,.11,.16)});
   });
 }
-function mark(page,x,top){page.drawText('X',{x:x-8,y:2631-top-9,size:23,font:window.pdfFont,color:PDFLib.rgb(.55,.1,.14)});}
+function fillCircle(page,x,top){
+  if(!Number.isFinite(x))return;
+  page.drawCircle({x,y:2631-top,size:17,color:PDFLib.rgb(.55,.1,.14)});
+}
 
 // Produz uma cópia do PDF original e grava os dados em suas áreas correspondentes.
 async function buildPdf(data){
   const original=await fetch('assets/ficha-original.pdf').then(r=>{if(!r.ok)throw new Error('Não foi possível carregar o modelo do PDF.');return r.arrayBuffer()});
   const pdf=await PDFLib.PDFDocument.load(original);
-  const page=pdf.getPage(0);const font=await pdf.embedFont(PDFLib.StandardFonts.Helvetica);window.pdfFont=await pdf.embedFont(PDFLib.StandardFonts.HelveticaBold);
+  const page=pdf.getPage(0);const font=await pdf.embedFont(PDFLib.StandardFonts.Helvetica);
   const fields=[
-    ['nome',145,362,1190,38],['cpf',1430,362,348,38],['rg',135,421,375,32],['nascimento',648,421,245,32],['sexo',1056,421,48,32],['sangue',1308,421,48,32],['admissao',1555,421,224,32],
-    ['telefone',280,477,628,36],['email',998,477,780,36],['endereco',185,528,1145,35],['cep',1417,528,360,35],['bairro',157,587,328,34],['cidade',585,587,327,34],['uf',994,587,63,34],['cargo',1158,587,277,34],['situacao',1567,587,210,34]
+    ['nome',149,352,1196,40],['cpf',1431,352,370,40],['rg',136,415,380,40],['nascimento',652,415,241,40],['sexo',1065,415,51,40],['sangue',1319,415,50,40],['admissao',1561,415,240,40],
+    ['telefone',281,471,632,40],['email',993,471,808,40],['endereco',187,526,1129,40],['cep',1408,526,393,40],['bairro',157,585,332,40],['cidade',581,585,332,40],['uf',996,585,61,40],['cargo',1162,585,276,40],['situacao',1561,585,240,40]
   ];
   for(const [key,x,y,w,h] of fields){
     if(key==='nascimento'){writeDateBox(page,font,data.get(key),x,y,w,727.49,787.53,h);continue;}
     if(key==='admissao'){writeDateBox(page,font,data.get(key),x,y,w,1635.66,1695.69,h);continue;}
     let value=data.get(key);
     if(key==='sexo')value=String(value||'').charAt(0).toUpperCase();
-    writeBox(page,font,value,x,y,w,h,22);
+    writeBox(page,font,value,x,y,w,h,24);
   }
   const complaint=(data.get('queixa')||'').trim();
-  if(complaint){let size=22,lines=wrapText(font,complaint,size,1460);while(lines.length>3&&size>10){size-=.5;lines=wrapText(font,complaint,size,1460);}lines.slice(0,3).forEach((line,i)=>writeBox(page,font,line,292,733+i*44,1480,34,size));}
+  if(complaint){
+    const boxes=[[281,719,1519,40],[73,762,1727,40],[73,806,1727,39]];
+    let size=24,layout=wrapTextIntoWidths(font,complaint,size,boxes.map(box=>box[2]-16));
+    while(layout.remaining&&size>8){size-=.5;layout=wrapTextIntoWidths(font,complaint,size,boxes.map(box=>box[2]-16));}
+    layout.lines.forEach((line,index)=>writeBox(page,font,line,...boxes[index],size));
+  }
   for(const q of [...medical,...habits]){
     const selected=data.get(q.id);const index=q.options?.indexOf(selected)??-1;
-    if(index>=0)mark(page,q.x[index],q.y);
-    if(q.detail)writeBox(page,font,data.get(`${q.id}_detail`),...q.detailBox,15);
-    if(q.input)writeBox(page,font,data.get(q.id),...q.box,18);
+    if(index>=0)fillCircle(page,q.x[index],q.y);
+    if(q.detail)writeBox(page,font,data.get(`${q.id}_detail`),...q.detailBox,22);
+    if(q.input)writeBox(page,font,data.get(q.id),...q.box,24);
   }
   return new Blob([await pdf.save()],{type:'application/pdf'});
 }
