@@ -1,27 +1,27 @@
 // Configurações dos campos reproduzem as perguntas da ficha oficial.
 const medical = [
-  {id:'medicamento',title:'Está tomando algum medicamento?',options:['Sim','Não'],detail:'Se sim, qual(is)?',x:[479,588],y:968,detailBox:[786,948,1012,38],wide:true},
-  {id:'pressao',title:'Sua pressão é:',options:['Normal','Alta','Baixa','Controlada com medicamento'],x:[311,419,527,840],y:1023,wide:true},
-  {id:'hemorragia',title:'Problemas com sangue/hemorragia?',options:['Sim','Não'],x:[474,572],y:1070},
-  {id:'anestesicos',title:'Tem ou teve problemas com anestésicos?',options:['Sim','Não','Não sei'],x:[520,619,738],y:1120},
-  {id:'psicologico',title:'Faz algum tratamento psicológico?',options:['Sim','Não'],x:[452,551],y:1170},
-  {id:'quimio',title:'Já fez ou faz algum tratamento com quimioterapia ou radioterapia?',options:['Sim','Não'],x:[742,840],y:1220,wide:true},
-  {id:'cirurgia',title:'Já fez alguma cirurgia?',options:['Sim','Não'],x:[351,449],y:1270},
-  {id:'necessidades',title:'Portador(a) de necessidades especiais?',options:['Sim','Não'],detail:'Se sim, qual(is)?',x:[507,606],y:1319,detailBox:[790,1301,1008,40],wide:true},
-  {id:'dentista',title:'Com que frequência vai ao dentista?',options:['Semestral','Anual','Quando tenho alguma queixa','Outra'],detail:'Se outra, qual?',x:[548,652,961,null],y:1369,detailBox:[1060,1350,738,40],wide:true},
-  {id:'cronica',title:'Você tem alguma doença crônica?',options:['Sim','Não'],x:[449,548],y:1418},
-  {id:'respiratorios',title:'Asma ou problemas respiratórios?',options:['Sim','Não'],x:[446,544],y:1467},
-  {id:'anemia',title:'Você tem anemia?',options:['Sim','Não'],x:[307,405],y:1516},
-  {id:'desmaios',title:'Você tem desmaios/convulsões?',options:['Sim','Não'],x:[433,532],y:1567},
-  {id:'transmissivel',title:'Você tem alguma doença transmissível?',options:['Sim','Não'],x:[500,599],y:1619}
+  {id:'medicamento',title:'Está tomando algum medicamento?',options:['Sim','Não'],detail:'Se sim, qual(is)?',circles:[[479,968],[588,968]],detailBox:[786,948,1012,38],wide:true},
+  {id:'pressao',title:'Sua pressão é:',options:['Normal','Alta','Baixa','Controlada com medicamento'],circles:[[311,1023],[419,1023],[527,1023],[840,1023]],wide:true},
+  {id:'hemorragia',title:'Problemas com sangue/hemorragia?',options:['Sim','Não'],circles:[[474,1070],[572,1070]]},
+  {id:'anestesicos',title:'Tem ou teve problemas com anestésicos?',options:['Sim','Não','Não sei'],circles:[[520,1120],[619,1120],[738,1120]]},
+  {id:'psicologico',title:'Faz algum tratamento psicológico?',options:['Sim','Não'],circles:[[452,1170],[551,1169]]},
+  {id:'quimio',title:'Já fez ou faz algum tratamento com quimioterapia ou radioterapia?',options:['Sim','Não'],circles:[[742,1220],[840,1220]],wide:true},
+  {id:'cirurgia',title:'Já fez alguma cirurgia?',options:['Sim','Não'],circles:[[351,1270],[449,1270]]},
+  {id:'necessidades',title:'Portador(a) de necessidades especiais?',options:['Sim','Não'],detail:'Se sim, qual(is)?',circles:[[507,1319],[606,1319]],detailBox:[790,1301,1008,40],wide:true},
+  {id:'dentista',title:'Com que frequência vai ao dentista?',options:['Semestral','Anual','Quando tenho alguma queixa','Outra'],detail:'Se outra, qual?',circles:[[548,1369],[652,1369],[961,1369],null],detailBox:[1060,1350,738,40],wide:true},
+  {id:'cronica',title:'Você tem alguma doença crônica?',options:['Sim','Não'],circles:[[449,1418],[548,1418]]},
+  {id:'respiratorios',title:'Asma ou problemas respiratórios?',options:['Sim','Não'],circles:[[446,1467],[544,1467]]},
+  {id:'anemia',title:'Você tem anemia?',options:['Sim','Não'],circles:[[307,1516],[405,1516]]},
+  {id:'desmaios',title:'Você tem desmaios/convulsões?',options:['Sim','Não'],circles:[[433,1567],[532,1567]]},
+  {id:'transmissivel',title:'Você tem alguma doença transmissível?',options:['Sim','Não'],circles:[[500,1619],[599,1619]]}
 ];
 const habits = [
-  {id:'range',title:'Range os dentes?',options:['Sim','Não'],x:[321,419],y:1722},
+  {id:'range',title:'Range os dentes?',options:['Sim','Não'],circles:[[321,1722],[419,1722]]},
   {id:'escovacoes',title:'Quantas vezes você escova os dentes ao dia?',input:true,box:[1322,1697,478,40]},
-  {id:'fumante',title:'Você é fumante?',options:['Sim','Não'],x:[321,419],y:1793},
-  {id:'gravida',title:'Você está grávida?',options:['Sim','Não'],x:[1178,1277],y:1796},
-  {id:'diabete',title:'Você tem diabetes?',options:['Sim','Não'],x:[321,419],y:1859},
-  {id:'alcool',title:'Você faz uso de bebida alcoólica?',options:['Sim','Não'],x:[1315,1414],y:1865}
+  {id:'fumante',title:'Você é fumante?',options:['Sim','Não'],circles:[[321,1793],[419,1793]]},
+  {id:'gravida',title:'Você está grávida?',options:['Sim','Não'],circles:[[1178,1796],[1277,1796]]},
+  {id:'diabete',title:'Você tem diabetes?',options:['Sim','Não'],circles:[[321,1859],[419,1859]]},
+  {id:'alcool',title:'Você faz uso de bebida alcoólica?',options:['Sim','Não'],circles:[[1315,1865],[1414,1865]]}
 ];
 
 // Desenha os controles mantendo cada grupo de respostas independente.
@@ -101,9 +101,10 @@ function writeDateBox(page,font,iso,x,top,width,slashX1,slashX2,height=32){
     page.drawText(fitted.text,{x:start+(segmentWidth-textWidth)/2,y:2631-top-height/2-fitted.size*.36,size:fitted.size,font,color:PDFLib.rgb(.08,.11,.16)});
   });
 }
-function fillCircle(page,x,top){
-  if(!Number.isFinite(x))return;
-  page.drawCircle({x,y:2631-top,size:17,color:PDFLib.rgb(.55,.1,.14)});
+function fillCircle(page,center){
+  if(!center)return;
+  const [x,top]=center;
+  page.drawCircle({x,y:2631-top,size:15,color:PDFLib.rgb(.55,.1,.14)});
 }
 
 // Produz uma cópia do PDF original e grava os dados em suas áreas correspondentes.
@@ -131,7 +132,7 @@ async function buildPdf(data){
   }
   for(const q of [...medical,...habits]){
     const selected=data.get(q.id);const index=q.options?.indexOf(selected)??-1;
-    if(index>=0)fillCircle(page,q.x[index],q.y);
+    if(index>=0)fillCircle(page,q.circles?.[index]);
     if(q.detail)writeBox(page,font,data.get(`${q.id}_detail`),...q.detailBox,22);
     if(q.input)writeBox(page,font,data.get(q.id),...q.box,24);
   }
