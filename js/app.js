@@ -39,21 +39,67 @@ document.querySelectorAll('[data-mask]').forEach(input=>input.addEventListener('
   if(input.dataset.mask==='phone'){const d=digits.slice(0,11);input.value=d.length>2?`(${d.slice(0,2)}) ${d.slice(2,d.length>10?7:6)}${d.length>6?'-'+d.slice(d.length>10?7:6):''}`:d;}
 }));
 
+// Consulta o ViaCEP quando os oito dígitos forem informados e mantém os campos editáveis.
+const cepInput=document.querySelector('[name="cep"]');
+const cepStatus=document.querySelector('#cep-status');
+let lastCep='';
+async function fillAddressFromCep(){
+  const cep=cepInput.value.replace(/\D/g,'');
+  if(cep.length!==8){cepStatus.textContent='';return;}
+  if(cep===lastCep)return;
+  cepStatus.textContent='Buscando endereço...';cepInput.setAttribute('aria-busy','true');
+  try{
+    const response=await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    if(!response.ok)throw new Error('Falha na consulta');
+    const address=await response.json();
+    if(address.erro){lastCep='';cepStatus.textContent='CEP não encontrado.';return;}
+    const fieldMap={endereco:address.logradouro,bairro:address.bairro,cidade:address.localidade,uf:address.uf};
+    Object.entries(fieldMap).forEach(([name,value])=>{if(value)form.elements[name].value=value;});
+    lastCep=cep;cepStatus.textContent='Endereço preenchido automaticamente.';
+    const firstEmpty=['endereco','bairro','cidade','uf'].find(name=>!form.elements[name].value);
+    if(firstEmpty)form.elements[firstEmpty].focus();
+  }catch(error){lastCep='';cepStatus.textContent='Não foi possível consultar o CEP. Preencha o endereço manualmente.';}
+  finally{cepInput.removeAttribute('aria-busy');}
+}
+cepInput.addEventListener('blur',fillAddressFromCep);
+cepInput.addEventListener('input',()=>{if(cepInput.value.replace(/\D/g,'').length===8)fillAddressFromCep();});
+
 // As coordenadas abaixo são medidas em pontos da página de 1860 × 2631 do PDF fornecido.
 // O texto é reduzido até caber na caixa, sem sobrescrever o rótulo impresso.
-function writeBox(page,font,value,x,top,width,height=33,base=17){
-  const text=String(value||'').trim().replace(/\s+/g,' '); if(!text)return;
-  let size=base;while(size>9&&font.widthOfTextAtSize(text,size)>width-12)size-=.5;
-  const chars=text;let remaining=chars;let line=0;
-  while(remaining&&line<Math.max(1,Math.floor(height/(size+5)))){
-    let cut=remaining.length;
-    while(cut>1&&font.widthOfTextAtSize(remaining.slice(0,cut),size)>width-12)cut--;
-    if(cut<remaining.length){const space=remaining.lastIndexOf(' ',cut);if(space>0)cut=space;}
-    page.drawText(remaining.slice(0,cut).trim(),{x:x+6,y:2631-top-6-size-line*(size+5),size,font,color:PDFLib.rgb(.11,.15,.2)});
-    remaining=remaining.slice(cut).trim();line++;
-  }
+function fitText(font,text,maxWidth,preferredSize,minSize=11){
+  let size=preferredSize;
+  while(size>minSize&&font.widthOfTextAtSize(text,size)>maxWidth)size-=.5;
+  if(font.widthOfTextAtSize(text,size)<=maxWidth)return {text,size};
+  while(size>4.5&&font.widthOfTextAtSize(text,size)>maxWidth)size-=.25;
+  return {text,size};
 }
-function dateBR(iso){if(!iso)return '';const [y,m,d]=iso.split('-');return `${d}/${m}/${y}`;}
+function writeBox(page,font,value,x,top,width,height=33,base=21){
+  const text=String(value||'').trim().replace(/\s+/g,' '); if(!text)return;
+  const horizontalPadding=8,verticalPadding=4;
+  const fitted=fitText(font,text,width-horizontalPadding*2,Math.min(base,height-verticalPadding*2),11);
+  const baseline=2631-top-height/2-fitted.size*.36;
+  page.drawText(fitted.text,{x:x+horizontalPadding,y:baseline,size:fitted.size,font,color:PDFLib.rgb(.08,.11,.16)});
+}
+function wrapText(font,text,size,maxWidth){
+  const lines=[];let remaining=text.trim();
+  while(remaining){
+    let cut=remaining.length;
+    while(cut>1&&font.widthOfTextAtSize(remaining.slice(0,cut),size)>maxWidth)cut--;
+    if(cut<remaining.length){const space=remaining.lastIndexOf(' ',cut);if(space>0)cut=space;}
+    lines.push(remaining.slice(0,cut).trim());remaining=remaining.slice(cut).trim();
+  }
+  return lines;
+}
+function writeDateBox(page,font,iso,x,top,width,slashX1,slashX2,height=32){
+  if(!iso)return;const [year,month,day]=String(iso).split('-');if(!day||!month||!year)return;
+  const slashWidth=10;
+  const segments=[[day,x,slashX1-x],[month,slashX1+slashWidth,slashX2-slashX1-slashWidth],[year,slashX2+slashWidth,x+width-slashX2-slashWidth]];
+  segments.forEach(([value,start,segmentWidth])=>{
+    const fitted=fitText(font,value,segmentWidth-6,22,12);
+    const textWidth=font.widthOfTextAtSize(fitted.text,fitted.size);
+    page.drawText(fitted.text,{x:start+(segmentWidth-textWidth)/2,y:2631-top-height/2-fitted.size*.36,size:fitted.size,font,color:PDFLib.rgb(.08,.11,.16)});
+  });
+}
 function mark(page,x,top){page.drawText('X',{x:x-8,y:2631-top-9,size:23,font:window.pdfFont,color:PDFLib.rgb(.55,.1,.14)});}
 
 // Produz uma cópia do PDF original e grava os dados em suas áreas correspondentes.
@@ -65,9 +111,15 @@ async function buildPdf(data){
     ['nome',145,362,1190,38],['cpf',1430,362,348,38],['rg',135,421,375,32],['nascimento',648,421,245,32],['sexo',1056,421,48,32],['sangue',1308,421,48,32],['admissao',1555,421,224,32],
     ['telefone',280,477,628,36],['email',998,477,780,36],['endereco',185,528,1145,35],['cep',1417,528,360,35],['bairro',157,587,328,34],['cidade',585,587,327,34],['uf',994,587,63,34],['cargo',1158,587,277,34],['situacao',1567,587,210,34]
   ];
-  for(const [key,x,y,w,h] of fields)writeBox(page,font,key==='nascimento'||key==='admissao'?dateBR(data.get(key)):data.get(key),x,y,w,h,18);
+  for(const [key,x,y,w,h] of fields){
+    if(key==='nascimento'){writeDateBox(page,font,data.get(key),x,y,w,727.49,787.53,h);continue;}
+    if(key==='admissao'){writeDateBox(page,font,data.get(key),x,y,w,1635.66,1695.69,h);continue;}
+    let value=data.get(key);
+    if(key==='sexo')value=String(value||'').charAt(0).toUpperCase();
+    writeBox(page,font,value,x,y,w,h,22);
+  }
   const complaint=(data.get('queixa')||'').trim();
-  if(complaint){const words=complaint.split(/\s+/);let lines=[''];for(const word of words){let last=lines.length-1;if(font.widthOfTextAtSize(`${lines[last]} ${word}`,20)>1490)lines.push(word);else lines[last]+=` ${word}`;}lines.slice(0,3).forEach((line,i)=>writeBox(page,font,line,292,733+i*44,1480,34,20));}
+  if(complaint){let size=22,lines=wrapText(font,complaint,size,1460);while(lines.length>3&&size>10){size-=.5;lines=wrapText(font,complaint,size,1460);}lines.slice(0,3).forEach((line,i)=>writeBox(page,font,line,292,733+i*44,1480,34,size));}
   for(const q of [...medical,...habits]){
     const selected=data.get(q.id);const index=q.options?.indexOf(selected)??-1;
     if(index>=0)mark(page,q.x[index],q.y);

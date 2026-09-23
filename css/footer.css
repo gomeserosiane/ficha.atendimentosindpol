@@ -1,1 +1,35 @@
-.site-footer{background:#222328;color:#fff;padding:36px 0}.footer-inner{display:flex;justify-content:space-between;gap:25px}.footer-inner strong{letter-spacing:.14em}.footer-inner p{color:#bdbdc0;font-size:.78rem;margin:7px 0}
+.site-footer {
+    background: #222328;
+    color: #fff;
+    padding: 36px 0
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px
+}
+
+.footer-logo {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    filter: drop-shadow(0 7px 10px #0008)
+}
+
+.footer-inner strong {
+    letter-spacing: .14em
+}
+
+.footer-inner p {
+    color: #bdbdc0;
+    font-size: .78rem;
+    margin: 7px 0
+}
